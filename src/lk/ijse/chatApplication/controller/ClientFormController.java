@@ -1,4 +1,4 @@
-package controller;
+package lk.ijse.chatApplication.controller;
 
 
 import com.jfoenix.controls.JFXButton;
@@ -13,7 +13,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -22,7 +21,6 @@ import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.Socket;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
 public class ClientFormController extends Thread {
@@ -54,7 +52,7 @@ public class ClientFormController extends Thread {
     }
 
     public void initialize(){
-        String clientName=LoginFormController.clientName;
+        String clientName= lk.ijse.chatApplication.controller.LoginFormController.clientName;
         lblClientName.setText(clientName);
         try {
             socket = new Socket("localhost", 7000);

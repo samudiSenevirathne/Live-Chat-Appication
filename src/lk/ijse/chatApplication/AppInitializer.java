@@ -1,4 +1,6 @@
-import controller.LoginFormController;
+package lk.ijse.chatApplication;
+
+import lk.ijse.chatApplication.controller.LoginFormController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,14 +19,14 @@ public class AppInitializer extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/LoginForm.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/lk/ijse/chatApplication/view/LoginForm.fxml"));
         Scene scene = new Scene(loader.load());
         scene.setFill(Color.TRANSPARENT);
         primaryStage.setScene(scene);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.centerOnScreen();
         primaryStage.setResizable(false);
-        ((LoginFormController) loader.getController()).inti(primaryStage);
+        ((lk.ijse.chatApplication.controller.LoginFormController) loader.getController()).inti(primaryStage);
         primaryStage.show();
 
     }

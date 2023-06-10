@@ -1,4 +1,4 @@
-package controller;
+package lk.ijse.chatApplication.controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
@@ -54,13 +54,13 @@ public class LoginFormController {
             clientName = txtClientName.getText();
             Stage stage = new Stage();
             stage.initStyle(StageStyle.TRANSPARENT);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ClientForm.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/lk/ijse/chatApplication/view/ClientForm.fxml"));
             Scene scene = new Scene(loader.load());
             scene.setFill(Color.TRANSPARENT);
 //        stage.centerOnScreen();
             stage.setScene(scene);
             stage.show();
-            ((ClientFormController) loader.getController()).inti(stage);
+            ((lk.ijse.chatApplication.controller.ClientFormController) loader.getController()).inti(stage);
             txtClientName.clear();
         }
     }
