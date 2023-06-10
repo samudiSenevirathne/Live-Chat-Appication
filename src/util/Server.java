@@ -21,7 +21,6 @@ public class Server {
             clients.add(clientThread);
             clientThread.start();
 
-
         }
 
     }

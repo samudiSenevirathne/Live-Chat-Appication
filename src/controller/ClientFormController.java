@@ -1,7 +1,7 @@
 package controller;
 
+
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextField;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -21,6 +22,8 @@ import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.Socket;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class ClientFormController extends Thread {
     public JFXButton btnMiniId;
@@ -56,7 +59,7 @@ public class ClientFormController extends Thread {
         try {
             socket = new Socket("localhost", 7000);
             System.out.println("Socket is connected with server!");
-            reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            reader = new BufferedReader(new InputStreamReader(socket.getInputStream(),StandardCharsets.UTF_8));
             writer = new PrintWriter(socket.getOutputStream(), true);
             this.start();
         } catch (IOException e) {
@@ -191,5 +194,16 @@ public class ClientFormController extends Thread {
         if(msg.equalsIgnoreCase("BYE..!") || (msg.equalsIgnoreCase("Logout"))) {
             System.exit(0);
         }
+    }
+
+    public void ImageOneMouseClicked(MouseEvent mouseEvent) {
+        txtMsg.setText(txtMsg.getText() + "😎");
+    }
+
+    public void ImageTwoMouseClicked(MouseEvent mouseEvent) {
+        txtMsg.setText(txtMsg.getText() + "😡");
+    }
+    public void ImageThreeMouseClicked(MouseEvent mouseEvent) {
+        txtMsg.setText(txtMsg.getText() + "🤣");
     }
 }

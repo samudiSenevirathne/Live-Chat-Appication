@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class ClientHandler extends Thread {
@@ -18,7 +19,7 @@ public class ClientHandler extends Thread {
         this.socket = socket;
         this.clients = clients;
         try {
-        this.reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        this.reader = new BufferedReader(new InputStreamReader(socket.getInputStream(),StandardCharsets.UTF_8));
         this.writer = new PrintWriter(socket.getOutputStream(), true);
         } catch (IOException e) {
             e.printStackTrace();
