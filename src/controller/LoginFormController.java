@@ -5,11 +5,14 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.util.regex.Matcher;
@@ -45,14 +48,21 @@ public class LoginFormController {
 
 
     public void btnLoginOnAvtion(ActionEvent actionEvent) throws IOException {
-        clientName = txtClientName.getText();
-        Stage stage =(Stage) loginFormContext.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ClientForm.fxml"));
-        Scene scene = new Scene(loader.load());
-        stage.centerOnScreen();
-        stage.setScene(scene);
-        ((ClientFormController) loader.getController()).inti(stage);
-        txtClientName.clear();
+        if(txtClientName.getText().isEmpty()){
+            new Alert(Alert.AlertType.WARNING,"plz input clientName!!").show();
+        }else {
+            clientName = txtClientName.getText();
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.TRANSPARENT);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ClientForm.fxml"));
+            Scene scene = new Scene(loader.load());
+            scene.setFill(Color.TRANSPARENT);
+//        stage.centerOnScreen();
+            stage.setScene(scene);
+            stage.show();
+            ((ClientFormController) loader.getController()).inti(stage);
+            txtClientName.clear();
+        }
     }
 
     public void txtClientNameKeyReleasedOnAction(KeyEvent keyEvent) {
